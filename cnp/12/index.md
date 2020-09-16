@@ -1,0 +1,77 @@
+---
+template: ../_cnp.html.jinja
+title: cnp12
+...
+
+## Variants
+
+<ul class="variants">
+<li>
+all variable declared at top of function (ancestral):
+```c
+function foobar()
+{
+    int ret = 0;
+    double *some_pointer = NULL;
+
+    lots_of_code();
+
+    // function code with no variable declarations ...
+}
+```
+</li>
+<li>
+some variables declared after code of function (mutant):
+```c
+function foobar()
+{
+    int ret = 0;
+
+    lots_of_code();
+
+    double *some_pointer = NULL;
+
+    // ...
+}
+```
+</li>
+</ul>
+
+
+## Frequency
+
+Ancestral variant is used in tskit-dev/msprime.
+
+
+## Human Interpretation
+
+Ancestral variant communicates
+all of the state (along with the mutable parameters) that can change when a
+function runs, especially, which pointers might need to be freed before the
+function returns, such as in the following example:
+
+```c
+function foobar()
+{
+    int ret = 0;
+    double *some_pointer = NULL;
+
+    // later
+    some_pointer = malloc(...);
+    if (some_pointer == NULL) {
+        ret = ERR_NO_MEMORY
+        goto out;
+    }
+    // still later
+out:
+     if (some_pointer != NULL) {
+         tsk_safe_free(some_pointer);
+     }
+     return ret;
+}
+```
+
+## Related Links
+
+[Minimize the scope of variables and functions](https://wiki.sei.cmu.edu/confluence/display/c/DCL19-C.+Minimize+the+scope+of+variables+and+functions)
+
