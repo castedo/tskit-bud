@@ -1,9 +1,8 @@
----
-template: _cnp.html.jinja
-title: Coding Notation Polymorphisms
-top: True
-...
+{% extends cnp_template_dir + "_cnp.html.jinja" %}
+{% set title = "Coding Notation Polymorphisms" %}
+{% set top = True %}
 
+{% block markdown %}
 
 <dl class="cnp-list">
 
@@ -24,3 +23,4 @@ Curly braces after if/else always vs usually
 
 </dl>
 
+{% endblock markdown %}

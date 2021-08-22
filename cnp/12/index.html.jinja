@@ -1,7 +1,7 @@
----
-template: ../_cnp.html.jinja
-title: cnp12
-...
+{% extends cnp_template_dir + "_cnp.html.jinja" %}
+{% set title = 'cnp12' %}
+
+{% block markdown %}
 
 ## Variants
 
@@ -75,3 +75,4 @@ out:
 
 [Minimize the scope of variables and functions](https://wiki.sei.cmu.edu/confluence/display/c/DCL19-C.+Minimize+the+scope+of+variables+and+functions)
 
+{% endblock markdown %}

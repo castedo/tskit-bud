@@ -1,5 +1,4 @@
 {% extends base_template %}
-{% set title = this.meta.title %}
 {% set top_link = this.relroot ~ "cnp/" %}
 
 {% block more_head %}
@@ -42,10 +41,10 @@ ul.variants > li {
 
 {% block content %}
 <div class="cnp-home">
-{% if not this.meta.top %}
+{% if not top %}
 <a href="{{top_link}}">Coding Notation Polymorphisms</a><big>&#9668;</big>
 {% endif %}
 </div>
-<h1>{{this.meta.title}}</h1>
-{{shell_call_output}}
+<h1>{{title}}</h1>
+{{pandoc(self.markdown())}}
 {% endblock content %}

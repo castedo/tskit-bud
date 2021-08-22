@@ -1,7 +1,7 @@
----
-template: ../_cnp.html.jinja
-title: cnp10
-...
+{% extends cnp_template_dir + "_cnp.html.jinja" %}
+{% set title = 'cnp10' %}
+
+{% block markdown %}
 
 ## Variants
 
@@ -45,3 +45,4 @@ if ((1 + 1) + (-1 + 1) != 2)
 
 [Use braces for the body of an if, for, or while statement](https://wiki.sei.cmu.edu/confluence/display/c/EXP19-C.+Use+braces+for+the+body+of+an+if%2C+for%2C+or+while+statement)
 
+{% endblock markdown %}

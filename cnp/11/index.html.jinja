@@ -1,7 +1,7 @@
----
-template: ../_cnp.html.jinja
-title: cnp11
-...
+{% extends cnp_template_dir + "_cnp.html.jinja" %}
+{% set title = 'cnp11' %}
+
+{% block markdown %}
 
 ## Variants
 
@@ -138,3 +138,4 @@ main(int argc, char **argv)
 
 [Const-qualify immutable objects](https://wiki.sei.cmu.edu/confluence/display/c/DCL00-C.+Const-qualify+immutable+objects)
 
+{% endblock markdown %}
